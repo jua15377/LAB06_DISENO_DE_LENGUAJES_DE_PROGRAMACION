@@ -91,31 +91,31 @@ public class AnalizadorSintactico {
                 }
                 //deben ser tres elementos con la estructura ident = alguna otra cosa
                 else if (lineaseparada.length == 3){
-                //System.out.println(lineaseparada[0]);
-                //System.out.println(lineaseparada[1]);
-                //System.out.println(lineaseparada[2]);
-                if(checkEndLine(lineaseparada[2])) {
-                    //verificar el ident
-                    if (ident(lineaseparada[0])) {
-                        //verificar el signo
-                        if (lineaseparada[1].equals("=")) {
-                            if (banderaDeCaracter) {
-                            }
-                            else if (banderaDeKeyword) {
+                    //System.out.println(lineaseparada[0]);
+                    //System.out.println(lineaseparada[1]);
+                    //System.out.println(lineaseparada[2]);
+                    if(checkEndLine(lineaseparada[2])) {
+                        //verificar el ident
+                        if (ident(lineaseparada[0])) {
+                            //verificar el signo
+                            if (lineaseparada[1].equals("=")) {
+                                if (banderaDeCaracter) {
+                                }
+                                else if (banderaDeKeyword) {
+                                }
+                                else {
+                                    System.out.println("Syntax error! -->DEFINIR ERROR: " + numnOfLine);
+                                }
                             }
                             else {
-                                System.out.println("Syntax error! -->DEFINIR ERROR: " + numnOfLine);
+                                System.out.println("Syntax error! --> Not a statement Line:" + numnOfLine);
+                                //validar el set
                             }
                         }
                         else {
-                            System.out.println("Syntax error! --> Not a statement Line:" + numnOfLine);
-                            //validar el set
+                            System.out.println("Syntax error! --> Not a ident  Line:" + numnOfLine);
                         }
                     }
-                    else {
-                        System.out.println("Syntax error! --> Not a ident  Line:" + numnOfLine);
-                    }
-                }
                 else{
                     System.out.println("Syntax error! --> '.' expected  Line:" + numnOfLine);
                     }

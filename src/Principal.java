@@ -47,8 +47,8 @@ public class Principal {
 
         // INICA LEXER
         System.out.println("Crando lexer...");
-        String a = "abcdfghijklmnopqrstuvwxyz";
-        System.out.println(a.contains(""));
+        LexerGenerator lexerGenerator = new LexerGenerator();
+
         System.out.println("Archivo generado!");
 
     }
