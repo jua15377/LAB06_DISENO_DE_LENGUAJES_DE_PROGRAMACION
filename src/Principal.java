@@ -1,3 +1,5 @@
+import org.omg.PortableInterceptor.ServerRequestInfo;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.*;
@@ -44,12 +46,25 @@ public class Principal {
         }
         //System.out.println(arreglodeDeLineas);
         analizadorSintactico.analizador(arreglodeDeLineas);
-
+        System.out.println("Si no hay errores el lexer fue creado correctamente" +
+                "de lo contrario, el LEXER FUE GENERARO CON ERRORES");
         // INICA LEXER
-        System.out.println("Crando lexer...");
+        System.out.println("Creando lexer...");
         LexerGenerator lexerGenerator = new LexerGenerator();
-
+        lexerGenerator.genarate(arreglodeDeLineas);
+        String texto = lexerGenerator.textoFinal;
         System.out.println("Archivo generado!");
+
+
+        try {
+            Writer output;
+            output = new BufferedWriter(new FileWriter(System.getProperty("user.dir") + "\\lexer.py"));  //clears file every time
+            output.append(texto);
+            output.close();
+        }catch (IOException e)
+        {            //exception handling left as an exercise for the reader
+        }
+
 
     }
 }
